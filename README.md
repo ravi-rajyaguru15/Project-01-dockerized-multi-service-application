@@ -18,7 +18,7 @@ The objective was to simulate a real-world, multi-container deployment in a cont
 ![Project 1 architecture](images/architecture/project-1-architecture.png)
 
 ## Technologies Used
-- AWS EC2 (Amazon Linux 2)  
+- AWS EC2 (Ubuntu server)  
 - Docker  
 - Docker Compose  
 - Nginx (reverse proxy)  
