@@ -29,24 +29,25 @@ The objective was to simulate a real-world, multi-container deployment in a cont
 - Memcached (in-memory caching)
 
 ## Repository Structure
+```text
 Project_01/
 ├── app/
-│   ├── Dockerfile                              <-- Multi-stage Dockerfile (Maven -> Tomcat)
-│   ├── src/                                    <-- Java web app source files
-│   └── pom.xml                                 <-- Maven project file
+│   ├── Dockerfile                              # Multi-stage Dockerfile (Maven -> Tomcat)
+│   ├── src/                                    # Java web app source files
+│   └── pom.xml                                 # Maven project file
 ├── mysql/
-│   ├── Dockerfile                              <-- MySQL Dockerfile
-│   └── db_backup.sql                           <-- .sql file to seed the MySQL database
+│   ├── Dockerfile                              # MySQL Dockerfile
+│   └── db_backup.sql                           # .sql file to seed the MySQL database
 ├── nginx/
-│   └── default.conf                            <-- Reverse proxy configuration
+│   └── default.conf                            # Reverse proxy configuration
 ├── images/
-|   ├── screenshots/                            <-- Screenshots of running services, EC2 instance, web app on EC2 public IP, etc.  
+|   ├── screenshots/                            # Screenshots of running services, EC2 instance, web app on EC2 public IP, etc.  
 │   └── architecture/
-|         └── project-1-architecture.png        <-- Architecture overview diagram of Project 1
-├── .env                                        <-- Environment file to store credentials for MySQL and RabbitMQ
-├── docker-compose.yaml                         <-- Docker compose file that defines 5 services
-└── README.md                                   <-- Project README (You are here)(Inception!)
-
+|         └── project-1-architecture.png        # Architecture overview diagram of Project 1
+├── .env                                        # Environment file to store credentials for MySQL and RabbitMQ
+├── docker-compose.yaml                         # Docker compose file that defines 5 services
+└── README.md                                   # Project README (You are here)(Inception!)
+```
 
 ## How to Deploy to AWS EC2
 1. Provision an EC2 instance (Example: Ubuntu Server 24.04 LTS, t2.medium, 25 GB gp storage), with a key-pair login and appropriate security group.
@@ -62,7 +63,10 @@ Project_01/
     ```bash
     docker ps
     ```
-8. Access the application using the EC2 Public IP: http://<EC2-public-IP>:80
+8. Access the application using the EC2 Public IP: 
+    ```bash
+    http://<EC2-public-IP>:80
+    ```
 9. After verification of web app, stop and clean the docker compose services:
     ```bash
     docker-compose down -v --rmi all
