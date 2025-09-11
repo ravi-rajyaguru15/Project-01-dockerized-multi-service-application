@@ -32,7 +32,7 @@ The objective was to simulate a real-world, multi-container deployment in a cont
 ```text
 Project_01/
 ├── app/
-│   ├── Dockerfile                              <-- Multi-stage Dockerfile (Maven -> Tomcat)
+│   ├── Dockerfile                              # Multi-stage Dockerfile (Maven -> Tomcat)
 │   ├── src/                                    # Java web app source files
 │   └── pom.xml                                 # Maven project file
 ├── mysql/
@@ -46,7 +46,7 @@ Project_01/
 |         └── project-1-architecture.png        # Architecture overview diagram of Project 1
 ├── .env                                        # Environment file to store credentials for MySQL and RabbitMQ
 ├── docker-compose.yaml                         # Docker compose file that defines 5 services
-└── README.md                                   # Project README (You are here)(Inception!)
+└── README.md                                   # Project README (You are here) (Inception!)
 ```
 
 ## How to Deploy to AWS EC2
