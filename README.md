@@ -32,7 +32,7 @@ The objective was to simulate a real-world, multi-container deployment in a cont
 ```text
 Project_01/
 ├── app/
-│   ├── Dockerfile                              # Multi-stage Dockerfile (Maven -> Tomcat)
+│   ├── Dockerfile                              <-- Multi-stage Dockerfile (Maven -> Tomcat)
 │   ├── src/                                    # Java web app source files
 │   └── pom.xml                                 # Maven project file
 ├── mysql/
