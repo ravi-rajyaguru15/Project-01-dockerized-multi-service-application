@@ -53,25 +53,24 @@ Project_01/
 1. Provision an EC2 instance (Example: Ubuntu Server 24.04 LTS, t2.medium, 25 GB gp storage), with a key-pair login and appropriate security group.
 2. Login to the EC2 instance via SSH using generated key.  
 3. Install Docker and Docker Compose.  
-4. Copy the project files to the EC2 instance via git clone, and navigate into the project folder.  
-5. Create the `.env` file with the necessary credentials.  
-6. Run:
+4. Copy the project files to the EC2 instance via git clone, and navigate into the project folder.   
+5. Run:
     ```bash
     docker compose up --build -d
     ```
-7. Verify running containers:
+6. Verify running containers:
     ```bash
     docker ps
     ```
-8. Access the application using the EC2 Public IP: 
+7. Access the application using the EC2 Public IP: 
     ```bash
     http://<EC2-public-IP>:80
     ```
-9. After verification of web app, stop and clean the docker compose services:
+8. After verification of web app, stop and clean the docker compose services:
     ```bash
     docker-compose down -v --rmi all
     ```
-10. Terminate the EC2 instance if not needed to avoid incurring unnecessary AWS costs.    
+9. Terminate the EC2 instance if not needed to avoid incurring unnecessary AWS costs.    
 
 ## Key Features
 - Multi-container orchestration with Docker Compose  
