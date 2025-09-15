@@ -16,9 +16,16 @@ The Java web application used in this project was externally sourced. However, t
 ---
 
 ## Project Overview
-This project demonstrates the deployment of a multi-tier Java web application using Docker Compose on a single EC2 instance in AWS. It includes five interdependent containers: Tomcat (web app), Maven (build), Nginx (reverse proxy), MySQL (database), RabbitMQ (message queue), and Memcached (cache).
 
-The objective was to simulate a real-world, multi-container deployment in a controlled, reproducible environment. This is the foundational project in a 3-stage portfolio demonstrating a full DevOps transformation.
+This project simulates a production-style deployment of a multi-tier Java web application stack using Docker Compose, hosted on an AWS EC2 instance.
+
+It demonstrates containerized deployment of:
+
+- A custom Java web app (Tomcat + Maven build)
+- MySQL (database)
+- RabbitMQ (message queue)
+- Memcached (cache)
+- Nginx (reverse proxy)
 
 ---
 
@@ -27,16 +34,13 @@ The objective was to simulate a real-world, multi-container deployment in a cont
 
 ---
 
-## Technologies Used
-- AWS EC2 (Ubuntu server)  
-- Docker  
-- Docker Compose  
-- Nginx (reverse proxy)  
-- Tomcat (Java application server)  
-- Maven (build container)  
-- MySQL (database)  
-- RabbitMQ (message queue)  
-- Memcached (in-memory caching)
+## Tech stack
+
+- **Infrastructure**: AWS EC2 (Ubuntu)
+- **Containers**: Docker, Docker Compose
+- **App Stack**: Tomcat, Maven, MySQL, RabbitMQ, Memcached
+- **Routing**: Nginx (reverse proxy)
+- **Configuration**: `.env` file for environment variables
 
 ---
 
@@ -63,7 +67,9 @@ Project_01/
 
 ---
 
-## How to Deploy to AWS EC2
+## How to Deploy (Reproduction Steps)
+
+This can be reproduced on any Linux-based AWS EC2 instance.
 
 1. Provision an EC2 instance (Example: Ubuntu Server 24.04 LTS, t2.medium, 25 GB gp storage), with a key-pair login and appropriate security group.
 
@@ -97,35 +103,25 @@ Project_01/
 
 ---
 
-## Key Features
-- Multi-container orchestration with Docker Compose  
-- Containerized build process using Maven  
-- Reverse proxy routing with Nginx  
-- Dynamic runtime configuration using environment variables via `.env`  
-- Inter-container communication using a shared Docker network  
-- Production-style deployment on AWS EC2
+## Engineering Insights
 
----
-
-## Engineering Decisions
-- Chose Docker Compose to manage service dependencies and simplify orchestration of multiple containers on a single host  
-- Used Maven as a standalone build container to ensure a reproducible `.war` file generation during deployment  
-- Applied Nginx as a reverse proxy for abstraction and better request routing to the Tomcat container  
-- Migrated hardcoded credentials (e.g., MySQL, RabbitMQ) into environment variables via a `.env` file to support better configuration management  
-- Explicitly declared Docker networks and service dependencies in `docker-compose.yml` to control container startup order and network resolution  
-- Isolated persistent data volumes where applicable for database containers
-- Used real AWS infrastructure to simulate real-world cloud provisioning — this was not done locally to maximize cloud readiness and practice debugging on real infrastructure.
+- Built a multi-container system using Docker Compose with proper inter-service networking
+- Used Maven as a containerized build tool to produce `.war` files for Tomcat deployment
+- Replaced hardcoded credentials with dynamic `.env` file for config management
+- Implemented Nginx as a reverse proxy to forward traffic to the Tomcat app container
+- Practiced real-world deployment and debugging using an actual EC2 instance (not locally)
+- Debugged container startup sequences, port conflicts, and Docker networking quirks
 
 ---
 
 ## What This Project Demonstrates
-- Foundational understanding of container-based application architecture  
-- Practical use of Docker Compose for service orchestration  
-- AWS EC2 provisioning and deployment flow  
-- Secure handling of environment-specific configurations using `.env`  
-- Hands-on deployment of a stateful, multi-tier web app  
-- Reproducible build pipeline within a cloud-hosted Linux environment
 
+- Solid foundation in containerized deployment  
+- Hands-on experience with multi-service orchestration  
+- Real-world AWS provisioning and service exposure  
+- Practical application of `.env` for secure, flexible configuration  
+- Clean separation of services with composable infrastructure
+- Use of mult-stage Dockerfile to reduce image size and isolate build from runtime.
 
 ---
 
