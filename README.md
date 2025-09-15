@@ -5,6 +5,7 @@
 [![Status](https://img.shields.io/badge/Status-Complete-brightgreen)](#)
 
 ## About the 3-Project DevOps System
+
 This project is the foundational stage of a self-designed 3-part DevOps portfolio projects designed to mirror the progression of infrastructure maturity in real-world engineering environments — from containerization, to orchestration, to full automation and observability.
 
 - **Project 1 (this)**: Multi-service containerization and deployment using Docker Compose on AWS EC2  
@@ -45,8 +46,10 @@ It demonstrates containerized deployment of:
 ---
 
 ## Repository Structure
+
 ```text
 Project_01/
+│ 
 ├── app/
 │   ├── Dockerfile                              # Multi-stage Dockerfile (Maven -> Tomcat)
 │   ├── src/                                    # Java web app source files
