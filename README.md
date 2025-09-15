@@ -1,5 +1,9 @@
 # Multi-Service Java Web Application Deployment with Docker Compose on AWS EC2
 
+[![Platform](https://img.shields.io/badge/Deployment-AWS_EC2-blue)](#)
+[![Containerization](https://img.shields.io/badge/Containers-Docker-informational)](#)
+[![Status](https://img.shields.io/badge/Status-Complete-brightgreen)](#)
+
 ## About the 3-Project DevOps System
 This project is the foundational stage of a self-designed 3-part DevOps portfolio projects designed to mirror the progression of infrastructure maturity in real-world engineering environments — from containerization, to orchestration, to full automation and observability.
 
