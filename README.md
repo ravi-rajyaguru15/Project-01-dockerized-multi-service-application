@@ -6,27 +6,35 @@
 
 ## About the 3-Project DevOps System
 
-This project is the foundational stage of a self-designed 3-part DevOps portfolio projects designed to mirror the progression of infrastructure maturity in real-world engineering environments — from containerization, to orchestration, to full automation and observability.
+This self-designed, 3-part DevOps portfolio series is intended to demonstrate the staged cloud migration and infrastructure maturity path of a multi-service web application: from containerization, to Kubernetes orchestration, to infrastructure automation, CI/CD, and observability.
 
 - **Project 1 (this)**: Multi-service containerization and deployment using Docker Compose on AWS EC2  
 - **Project 2**: Kubernetes orchestration of the same application stack on AWS EKS - [Project 2](https://github.com/ravi-rajyaguru15/Project-02-eks-k8s-infrastructure-orchestration)
-- **Project 3**: Infrastructure-as-Code with Terraform, CI/CD via GitHub Actions, and monitoring using Prometheus and Grafana - [Project 3](https://github.com/ravi-rajyaguru15/Project-03-terraform-cicd-observability-pipeline)
+- **Project 3**: Infrastructure as Code with Terraform, CI/CD via GitHub Actions, and monitoring using Prometheus and Grafana - [Project 3](https://github.com/ravi-rajyaguru15/Project-03-terraform-cicd-observability-pipeline)
 
-The Java web application used in this project was externally sourced. However, to ensure the system appeared more production-ready and portfolio-appropriate, all course-specific branding was removed. UI elements and presentation were modified to reflect a generic, open-source-style internal platform. This allowed full attention to be directed toward infrastructure, deployment, and DevOps process engineering.
+The Java web application used across this portfolio is externally sourced. Minor UI/content adjustments are made to remove source-specific branding and present it as a neutral demo web application. The infrastructure design, containerization, cloud deployment, Kubernetes manifests, Terraform configuration, CI/CD workflow setup, monitoring integration, documentation, troubleshooting, and migration-stage decisions were independently implemented. The same application stack is intentionally reused across all three projects so the focus remains on infrastructure maturity and core DevOps practices.
 
 ---
 
 ## Project Overview
 
-This project simulates a production-style deployment of a multi-tier Java web application stack using Docker Compose, hosted on an AWS EC2 instance.
+This project demonstrates the first migration stage: containerizing a multi-service Java web application stack and running it on a cloud-hosted Linux environment using AWS EC2 and Docker Compose.
 
-It demonstrates containerized deployment of:
+It showcases containerized deployment of:
 
-- A custom Java web app (Tomcat + Maven build)
-- MySQL (database)
-- RabbitMQ (message queue)
-- Memcached (cache)
-- Nginx (reverse proxy)
+- A custom Java web app running on Tomcat, with Maven used during the build process
+- MySQL as the database
+- RabbitMQ as the message queue
+- Memcached as the cache layer
+- NGINX as the reverse proxy
+
+---
+
+## Project Scope
+
+This stage focuses on containerization, service networking, reverse proxy configuration, environment-based runtime configuration, deployment reproducibility, and hands-on troubleshooting.
+
+It is not intended to represent a fully production-operated system. High availability, advanced security hardening, centralized monitoring/logging, backup strategy, and automated delivery workflows are intentionally outside the scope of this first stage. Some of these areas are introduced progressively in later projects, while others represent areas I aim to deepen through professional cloud/platform engineering experience.
 
 ---
 
@@ -35,12 +43,12 @@ It demonstrates containerized deployment of:
 
 ---
 
-## Tech stack
+## Tech Stack
 
 - **Infrastructure**: AWS EC2 (Ubuntu)
 - **Containers**: Docker, Docker Compose
 - **App Stack**: Tomcat, Maven, MySQL, RabbitMQ, Memcached
-- **Routing**: Nginx (reverse proxy)
+- **Routing**: NGINX (reverse proxy)
 - **Configuration**: `.env` file for environment variables
 
 ---
@@ -64,7 +72,9 @@ Project_01/
 │   └── architecture/
 |         └── project-1-architecture.png        # Architecture overview diagram of Project 1
 ├── .env                                        # Environment file to store credentials for MySQL and RabbitMQ
-├── docker-compose.yaml                         # Docker compose file that defines 5 services
+|                                                 (This is for demonstration purposes only, and is not suitable for actual production security best practices.)
+| 
+├── docker-compose.yml                         # Docker compose file that defines 5 services
 └── README.md                                   # Project README (You are here) (Inception!)
 ```
 
@@ -74,7 +84,7 @@ Project_01/
 
 This can be reproduced on any Linux-based AWS EC2 instance.
 
-1. Provision an EC2 instance (Example: Ubuntu Server 24.04 LTS, t2.medium, 25 GB gp storage), with a key-pair login and appropriate security group.
+1. Provision an EC2 instance (Example: Ubuntu Server 24.04 LTS, t2.medium, 25 GB gp3 storage), with a key-pair login and appropriate security group.
 
 2. Login to the EC2 instance via SSH using generated key.  
 
@@ -100,7 +110,7 @@ This can be reproduced on any Linux-based AWS EC2 instance.
 8. After verification of web app, stop and clean the docker compose services:
     
     ```bash
-    docker-compose down -v --rmi all
+    docker compose down -v --rmi all
     ```
 9. Terminate the EC2 instance if not needed to avoid incurring unnecessary AWS costs.    
 
@@ -108,29 +118,11 @@ This can be reproduced on any Linux-based AWS EC2 instance.
 
 ## Engineering Insights
 
-- Built a multi-container system using Docker Compose with proper inter-service networking
-- Used Maven as a containerized build tool to produce `.war` files for Tomcat deployment
-- Replaced hardcoded credentials with dynamic `.env` file for config management
-- Implemented Nginx as a reverse proxy to forward traffic to the Tomcat app container
-- Practiced real-world deployment and debugging using an actual EC2 instance (not locally)
-- Debugged container startup sequences, port conflicts, and Docker networking quirks
-
----
-
-## What This Project Demonstrates
-
-- Solid foundation in containerized deployment  
-- Hands-on experience with multi-service orchestration  
-- Real-world AWS provisioning and service exposure  
-- Practical application of `.env` for secure, flexible configuration  
-- Clean separation of services with composable infrastructure
-- Use of mult-stage Dockerfile to reduce image size and isolate build from runtime.
-
----
-
-## Attribution
-The Java web application used in this project was externally sourced. All containerization, orchestration, deployment strategy, and infrastructure setup were independently implemented. Although modifying the frontend was beyond the initial scope, and also to ensure the system appeared more production-ready and portfolio-appropriate, all course-specific branding was removed; UI elements and presentation were modified to reflect a generic, open-source-style web application. 
-
-A delibrate and calculated decision was also made to use the same web apllication throughout all 3 projects. This allowed full attention to be directed towards infrastructure, deployment, and DevOps process engineering.
+- Built a multi-container application stack using Docker Compose with basic inter-service startup ordering.
+- Used Maven as part of a containerized build process to produce a `.war` file for Tomcat deployment.
+- Used an `.env` file for environment-based runtime configuration instead of hardcoded credentials in the Compose file. 
+- Configured NGINX as a reverse proxy to forward traffic to the Tomcat application container.
+- Practiced cloud-based deployment and troubleshooting on an actual AWS EC2 instance instead of a local-only environment.
+- Debugged container startup ordering, port conflicts, environment configuration, and Docker networking issues.
 
 ---
