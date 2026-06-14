@@ -74,7 +74,7 @@ Project_01/
 ├── .env                                        # Environment file to store credentials for MySQL and RabbitMQ
 |                                                 (This is for demonstration purposes only, and is not suitable for actual production security best practices.)
 | 
-├── docker-compose.yml                         # Docker compose file that defines 5 services
+├── docker-compose.yml                          # Docker compose file that defines 5 services
 └── README.md                                   # Project README 
 ```
 
